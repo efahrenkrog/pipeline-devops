@@ -13,18 +13,12 @@ lib {
           stage("Pipeline"){
               steps {
                   script{
-                    switch(params.compileTool)
-                      {
-                          case 'Maven':
-                              //def ejecucion = load 'maven.groovy'
-                              //ejecucion.call()
-                              maven.call()
-                          break;
-                          case 'Gradle':
-                              //def ejecucion = load 'gradle.groovy'
-                              //ejecucion.call()
-                              gradle.call()
-                          break;
+                      sh "env"
+                      env.TAREA = ""
+                      if(params.compileTool == 'maven'){
+                        maven.call(params.stages);
+                      }else{
+                        gradle.call(params.stages)
                       }
                   }
               }
