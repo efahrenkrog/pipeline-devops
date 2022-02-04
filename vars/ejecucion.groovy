@@ -6,8 +6,8 @@ lib {
           NEXUS_PASSWORD     = credentials('NEXUS-PASS')
       }
       parameters {
-          choice(name:'compileTool',choices: ['Maven', 'Gradle'],description: 'Seleccione herramienta de compilacion')
-          text description: 'ingrese los stages que se desean ejecutar, separados por ",",  dejar vacio para ejecutar todos los stage', name: 'stages'
+            choice choices: ['maven', 'gradle'], description: 'Seleccione una herramienta para preceder a compilar', name: 'compileTool'
+            text description: 'Enviar los stages separados por ";"... Vacío si necesita todos los stages', name: 'stages'
       }
       stages {
           stage("Pipeline"){
