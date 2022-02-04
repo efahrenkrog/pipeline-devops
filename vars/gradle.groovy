@@ -4,8 +4,7 @@
 	ejecucion.call()
 */
 def call(stages){
-​
-    def listStagesOrder = [
+​    def listStagesOrder = [
         'build': 'stageCleanBuildTest',
         'sonar': 'stageSonar',
         'run_spring_curl': 'stageRunSpringCurl',
@@ -14,8 +13,7 @@ def call(stages){
         'run_jar': 'stageRunJar',
         'curl_jar': 'stageCurlJar'
     ]
-​
-    if (stages.isEmpty()) {
+​    if (stages.isEmpty()) {
         echo 'El pipeline se ejecutará completo'
         allStages()
     } else {
@@ -28,12 +26,9 @@ def call(stages){
                 }
             }
         }
-​
-    }
-​
-}
-​
-def stageCleanBuildTest(){
+​    }
+​}
+​def stageCleanBuildTest(){
     env.DESCRTIPTION_STAGE = 'Paso 1: Build - Test'
     stage("${env.DESCRTIPTION_STAGE}"){
         env.STAGE = "build - ${env.DESCRTIPTION_STAGE}"
@@ -41,8 +36,7 @@ def stageCleanBuildTest(){
         sh "gradle clean build"
     }
 }
-​
-def stageSonar(){
+​def stageSonar(){
     env.DESCRTIPTION_STAGE = "Paso 2: Sonar - Análisis Estático"
     stage("${env.DESCRTIPTION_STAGE}"){
         env.STAGE = "sonar - ${DESCRTIPTION_STAGE}"
@@ -52,8 +46,7 @@ def stageSonar(){
         }
     }
 }
-​
-def stageRunSpringCurl(){
+​def stageRunSpringCurl(){
     env.DESCRTIPTION_STAGE = "Paso 3: Curl Springboot Gralde sleep 20"
     stage("${env.DESCRTIPTION_STAGE}"){
         env.STAGE = "run_spring_curl - ${DESCRTIPTION_STAGE}"
