@@ -65,7 +65,7 @@ def stageCleanBuildTest(){
     env.TAREA = "Paso 1: Build && Test"
     stage("$env.TAREA"){
         sh "echo 'Build && Test!'"
-        sh "gradlew clean build"
+        sh "gradle clean build"
         // code
     }
 }
