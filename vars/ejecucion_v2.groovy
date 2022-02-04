@@ -1,5 +1,5 @@
 def call(){
-  salida {
+  salida{
       agent any
       environment {
           NEXUS_USER         = credentials('NEXUS-USER')
