@@ -8,5 +8,11 @@ def call(stages){
     sh "mvn clean compile -e"
   }
   
+  stage("Paso 2: Sonar - Análisis Estático"){
+      sh "echo 'Análisis Estático!'"
+      withSonarQubeEnv('sonarqube') {
+          sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build'
+      }
+  }
 }
 return this;
