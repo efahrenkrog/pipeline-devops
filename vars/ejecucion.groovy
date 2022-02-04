@@ -1,5 +1,5 @@
 def call(){
-lib {
+pipeline {
       agent any
       environment {
           NEXUS_USER         = credentials('NEXUS-USER')
